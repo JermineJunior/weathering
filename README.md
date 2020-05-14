@@ -1,4 +1,4 @@
-# tailwind
+# Simple Weather app to get with vuejs
 
 ## Project setup
 ```
