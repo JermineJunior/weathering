@@ -19,8 +19,8 @@
 
     <div class="text-center mt-10 ml-20" v-if="typeof weather.main !='undefined'">
       <div class="">
-        <div class="text-xl font-semibold">{{weather.name}}, {{ weather.sys.country }}</div>
-        <div class="leading-relaxed text-lg italic">{{dateBuilder()}}</div>
+        <div class="text-xl text-gray-100 font-semibold">{{weather.name}}, {{ weather.sys.country }}</div>
+        <div class="leading-relaxed text-gray-100 text-lg italic">{{dateBuilder()}}</div>
       </div>
       <div class="bg-white mt-4 rounded shadow-we inline-block max-w-sm px-4 py-3 text-xl text-gray-700 font-semibold">
         <div class="">{{Math.round(weather.main.temp) }}°c</div>
@@ -41,6 +41,7 @@
 
 <script>
 
+import axios from "axios";
 export default {
   name: 'App',
   data(){
@@ -49,19 +50,22 @@ export default {
       url_base: "https://api.openweathermap.org/data/2.5/",
       query: "",
       weather: {},
-      response:''
+      response:'',
     }
   },
   methods: {
     fetchWeather(e) {
       if (e.key == "Enter") {
-        fetch(
+        axios.get(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
+        .then(res => this.weather = res)
+        .catch(error => console.log(error));J
+       /*  fetch(
           `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
           .then(res => {
             return res.json();
           })
-          .then(this.setResults);
+          .then(this.setResults); */
       }
     },
     setResults(results) {
@@ -89,7 +93,7 @@ export default {
 <style>
   @import "assets/css/tailwind.css";
   .cover{
-    background-image: url("./assets/cover.jpg");
+    background-image: url("./assets/cover2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     transition: 0.4s;
