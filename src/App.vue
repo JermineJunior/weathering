@@ -9,8 +9,8 @@
                 </svg>
             </div>
             <input class="search-input w-full rounded-full pl-8 -ml-2 py-2 mr-2 mr-4 focus:outline-none" 
-            type="text" 
-            v-model="query"
+            type="search" 
+            v-model="city"
             @keypress="fetchWeather"
             placeholder="Type city name">
         </div>
@@ -47,7 +47,7 @@ export default {
     return{
       api_key:'c1e9728f518bf2dd5717027100381b7a',
       url_base: "https://api.openweathermap.org/data/2.5/weather",
-      query: "",
+      city: "",
       weather: {},
     }
   },
@@ -55,7 +55,7 @@ export default {
      fetchWeather(e) {
       if (e.key == "Enter") {
         fetch(
-          `${this.url_base}?q=${this.query}&units=metric&APPID=${this.api_key}`
+          `${this.url_base}?q=${this.city}&units=metric&APPID=${this.api_key}`
         )
           .then(res => {
             return res.json();
