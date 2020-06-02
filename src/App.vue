@@ -41,7 +41,6 @@
 
 <script>
 
-import axios from "axios";
 export default {
   name: 'App',
   data(){
@@ -54,18 +53,15 @@ export default {
     }
   },
   methods: {
-    fetchWeather(e) {
+     fetchWeather(e) {
       if (e.key == "Enter") {
-        axios.get(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
-        .then(res => this.weather = res)
-        .catch(error => console.log(error));J
-       /*  fetch(
+        fetch(
           `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
           .then(res => {
             return res.json();
           })
-          .then(this.setResults); */
+          .then(this.setResults);
       }
     },
     setResults(results) {
