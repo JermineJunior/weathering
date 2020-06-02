@@ -5,4 +5,5 @@
     @apply bg-white rounded inline-block max-w-sm  text-xl   text-gray-700 font-semibold;
     box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
+
 @tailwind utilities;
