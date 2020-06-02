@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="app font-serif">
     <div class="flex items-center justify-center mt-10 ">
     <div class="search w-3/5 ml-20">
         <div class="relative w-full">
@@ -8,7 +8,7 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#a0aec0"/>
                 </svg>
             </div>
-            <input class="block bg-white w-full rounded-full text-gray-800 text-base placeholder-gray-500 pl-8 -ml-2 py-2 mr-2 focus:outline-none focus:bg-gray-200 focus:text-gray-900  mr-4" 
+            <input class="search-input w-full rounded-full pl-8 -ml-2 py-2 mr-2 mr-4 focus:outline-none" 
             type="text" 
             v-model="query"
             @keypress="fetchWeather"
@@ -22,9 +22,9 @@
         <div class="text-xl text-gray-100 font-semibold">{{weather.name}}, {{ weather.sys.country }}</div>
         <div class="leading-relaxed text-gray-100 text-lg italic">{{dateBuilder()}}</div>
       </div>
-      <div class="card mt-4  px-4 py-3">
+      <div class="card mt-4 px-4 py-3">
         <div class="">{{Math.round(weather.main.temp) }}°c</div>
-        <div>Wind Speed {{weather.wind.speed }} KPH</div>
+       <!--  <div>Wind Speed {{weather.wind.speed }} KPH</div>  not important -->
         <div class="italic">{{weather.weather[0].main}}</div>
       </div>
   </div><!-- results -->
