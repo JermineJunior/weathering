@@ -22,7 +22,7 @@
         <div class="text-xl text-gray-100 font-semibold">{{weather.name}}, {{ weather.sys.country }}</div>
         <div class="leading-relaxed text-gray-100 text-lg italic">{{dateBuilder()}}</div>
       </div>
-      <div class="bg-white mt-4 rounded shadow-we inline-block max-w-sm px-4 py-3 text-xl text-gray-700 font-semibold">
+      <div class="card mt-4  px-4 py-3">
         <div class="">{{Math.round(weather.main.temp) }}°c</div>
         <div>Wind Speed {{weather.wind.speed }} KPH</div>
         <div class="italic">{{weather.weather[0].main}}</div>
@@ -46,7 +46,7 @@ export default {
   data(){
     return{
       api_key:'c1e9728f518bf2dd5717027100381b7a',
-      url_base: "https://api.openweathermap.org/data/2.5/",
+      url_base: "https://api.openweathermap.org/data/2.5/weather",
       query: "",
       weather: {},
       response:'',
@@ -56,7 +56,7 @@ export default {
      fetchWeather(e) {
       if (e.key == "Enter") {
         fetch(
-          `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
+          `${this.url_base}?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
           .then(res => {
             return res.json();
@@ -68,18 +68,19 @@ export default {
       this.weather = results;
     },
     dateBuilder() {
-      let d = new Date();
+      let dateObject = new Date();
       let months = [
         "January","February","March","April","May","June","July",
         "August","September","October","November","December"
       ];
       let days = [
-          "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
+      ];
 
-      let day = days[d.getDay()];
-      let date = d.getDate();
-      let month = months[d.getMonth()];
-      let year = d.getFullYear();
+      let day = days[dateObject.getDay()];//convert day number to day name
+      let date = dateObject.getDate();
+      let month = months[dateObject.getMonth()];//convert month number to name
+      let year = dateObject.getFullYear();
       return `${day} ${date} ${month} ${year}`;
     }
   }

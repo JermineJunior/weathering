@@ -1,5 +1,5 @@
-# Simple Weather app to get with vuejs
-
+# Simple Weather app to get up and running  with vuejs
+# UI scafled with tailwindcss
 ## Project setup
 ```
 npm install
